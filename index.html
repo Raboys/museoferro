@@ -118,16 +118,26 @@
       font-size: 15px;
       font-weight: 700;
       letter-spacing: -.3px;
-      color: var(--negro);
+      color: var(--blanco);
       line-height: 1.2;
+      transition: color var(--transition);
+    }
+
+    nav.scrolled .nav-logo-text {
+      color: var(--negro);
     }
 
     .nav-logo-sub {
       font-size: 10px;
       font-weight: 500;
-      color: var(--gris-soft);
+      color: rgba(255,255,255,.7);
       letter-spacing: .5px;
       text-transform: uppercase;
+      transition: color var(--transition);
+    }
+
+    nav.scrolled .nav-logo-sub {
+      color: var(--gris-soft);
     }
 
     .nav-links {
@@ -140,15 +150,25 @@
     .nav-links a {
       font-size: 13.5px;
       font-weight: 500;
-      color: var(--gris-mid);
+      color: rgba(255,255,255,.85);
       padding: 8px 14px;
       border-radius: var(--radius-sm);
       transition: var(--transition);
       letter-spacing: -.1px;
     }
 
+    nav.scrolled .nav-links a {
+      color: var(--gris-mid);
+    }
+
     .nav-links a:hover,
     .nav-links a.active {
+      color: var(--blanco);
+      background: rgba(255,255,255,.15);
+    }
+
+    nav.scrolled .nav-links a:hover,
+    nav.scrolled .nav-links a.active {
       color: var(--verde);
       background: var(--verde-pale);
     }
@@ -287,7 +307,7 @@
           rgba(0, 0, 0, 0.65) 100%
         ),
         /* foto centrada mostrando las plateas con FERRO */
-        url('img/hero.jpeg?v=2') center 45% / cover no-repeat;
+        url('img/hero.webp') center 45% / cover no-repeat;
       z-index: 0;
     }
 
@@ -610,7 +630,7 @@
           rgba(10, 28, 10, 0.35) 60%,
           rgba(12, 30, 12, 0.05) 100%
         ),
-        url('img/boleteria.jpeg') center 60% / cover no-repeat;
+        url('img/boleteria.webp') center 60% / cover no-repeat;
     }
 
     /* sin pseudo-element ya que tenemos la foto */
@@ -910,14 +930,14 @@
     }
 
     /* Cada proyecto tiene su propio gradiente */
-    .proy-card:nth-child(1) .proy-card-top { background: url('img/ceramicos.jpeg') center/cover no-repeat; }
-    .proy-card:nth-child(2) .proy-card-top { background: url('img/tablones.jpeg') center/cover no-repeat; }
+    .proy-card:nth-child(1) .proy-card-top { background: url('img/ceramicos.webp') center/cover no-repeat; }
+    .proy-card:nth-child(2) .proy-card-top { background: url('img/tablones.webp') center/cover no-repeat; }
     .proy-card:nth-child(3) .proy-card-top { background: url('img/noche-museos.webp') center/cover no-repeat; }
-    .proy-card:nth-child(4) .proy-card-top { background: url('img/visitas.jpg') center/cover no-repeat; }
+    .proy-card:nth-child(4) .proy-card-top { background: url('img/visitas.webp') center/cover no-repeat; }
     .proy-card:nth-child(5) .proy-card-top {
       background:
         linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.5) 100%),
-        url('img/convenio.jpeg') center 30% / cover no-repeat;
+        url('img/convenio.webp') center 30% / cover no-repeat;
     }
 
     .proy-card-emoji {
@@ -1819,7 +1839,7 @@
 
       <div class="map-container reveal-right delay-2">
         <div class="map-placeholder">
-          <img src="img/mapa.png" alt="Mapa ubicación Estadio Ferro Carril Oeste — Avellaneda 1240, Caballito" />
+          <img src="img/mapa.webp" alt="Mapa ubicación Estadio Ferro Carril Oeste — Avellaneda 1240, Caballito" />
           <div class="map-overlay">
             <p>📍 Avellaneda 1240, Caballito</p>
             <a href="https://maps.google.com/?q=Avellaneda+1240+Caballito+Buenos+Aires" target="_blank" rel="noopener">
