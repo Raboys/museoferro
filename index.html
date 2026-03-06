@@ -269,12 +269,25 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: linear-gradient(160deg,
-        #0b1f0a 0%,
-        #152c12 35%,
-        #1d4a1a 60%,
-        #2D6A27 100%
-      );
+      background:
+        /* capa 1: gradiente izq→der — área del texto muy oscura, derecha con foto visible */
+        linear-gradient(
+          to right,
+          rgba(5, 16, 5, 0.93) 0%,
+          rgba(8, 22, 8, 0.85) 35%,
+          rgba(10, 28, 10, 0.55) 60%,
+          rgba(12, 30, 12, 0.25) 100%
+        ),
+        /* capa 2: vignette top+bottom para enmarcar */
+        linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.45) 0%,
+          rgba(0, 0, 0, 0.05) 35%,
+          rgba(0, 0, 0, 0.05) 65%,
+          rgba(0, 0, 0, 0.65) 100%
+        ),
+        /* foto centrada mostrando las plateas con FERRO */
+        url('img/hero.jpeg?v=2') center 45% / cover no-repeat;
       z-index: 0;
     }
 
@@ -576,10 +589,10 @@
 
     .museo-visual {
       position: relative;
+      padding-bottom: 56px;
     }
 
     .museo-card-main {
-      background: var(--verde);
       border-radius: var(--radius-lg);
       aspect-ratio: 4/5;
       overflow: hidden;
@@ -588,15 +601,20 @@
       flex-direction: column;
       justify-content: flex-end;
       padding: 36px;
+      background:
+        /* gradiente de abajo hacia arriba: oscuro abajo para el texto, transparente arriba */
+        linear-gradient(
+          to top,
+          rgba(5, 16, 5, 0.95) 0%,
+          rgba(8, 22, 8, 0.80) 30%,
+          rgba(10, 28, 10, 0.35) 60%,
+          rgba(12, 30, 12, 0.05) 100%
+        ),
+        url('img/boleteria.jpeg') center 60% / cover no-repeat;
     }
 
-    /* Patrón geométrico SVG */
-    .museo-card-main::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    }
+    /* sin pseudo-element ya que tenemos la foto */
+    .museo-card-main::before { display: none; }
 
     .museo-card-text {
       position: relative;
@@ -631,8 +649,8 @@
 
     .museo-float {
       position: absolute;
-      bottom: -20px;
-      left: -20px;
+      bottom: 0;
+      left: 16px;
       background: white;
       border-radius: var(--radius-md);
       padding: 20px 24px;
@@ -892,10 +910,15 @@
     }
 
     /* Cada proyecto tiene su propio gradiente */
-    .proy-card:nth-child(1) .proy-card-top { background: url('img/ceramicos.jpg') center/cover no-repeat; }
-    .proy-card:nth-child(2) .proy-card-top { background: url('img/tablones.jpg') center/cover no-repeat; }
+    .proy-card:nth-child(1) .proy-card-top { background: url('img/ceramicos.jpeg') center/cover no-repeat; }
+    .proy-card:nth-child(2) .proy-card-top { background: url('img/tablones.jpeg') center/cover no-repeat; }
     .proy-card:nth-child(3) .proy-card-top { background: url('img/noche-museos.webp') center/cover no-repeat; }
     .proy-card:nth-child(4) .proy-card-top { background: url('img/visitas.jpg') center/cover no-repeat; }
+    .proy-card:nth-child(5) .proy-card-top {
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.5) 100%),
+        url('img/convenio.jpeg') center 30% / cover no-repeat;
+    }
 
     .proy-card-emoji {
       font-size: 52px;
@@ -1567,7 +1590,7 @@
           <div class="tl-card reveal-right">
             <div class="tl-year">1982</div>
             <div class="tl-title">Primer título nacional</div>
-            <div class="tl-desc">Ferro conquista el Torneo Nacional 1982 bajo la conducción del Bambino Veira, en la época dorada del club.</div>
+            <div class="tl-desc">Ferro conquista el Torneo Nacional 1982 bajo la conducción de Carlos Timoteo Griguol, en la época dorada del club.</div>
           </div>
         </div>
 
@@ -1681,6 +1704,23 @@
             <div class="proy-card-tag">
               <span class="tag">Visitas</span>
               <span class="tag">Historia</span>
+            </div>
+            <div class="proy-arrow">↗</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proy-card reveal delay-5">
+        <div class="proy-card-top">
+          <div class="proy-status status-active">En curso</div>
+        </div>
+        <div class="proy-card-body">
+          <div class="proy-card-title">Convenio con la UBA</div>
+          <div class="proy-card-desc">Acuerdo con la Facultad de Filosofía y Letras de la Universidad de Buenos Aires para profesionalizar la investigación, la curaduría y la preservación del patrimonio histórico institucional.</div>
+          <div class="proy-card-footer">
+            <div class="proy-card-tag">
+              <span class="tag">Investigación</span>
+              <span class="tag">Academia</span>
             </div>
             <div class="proy-arrow">↗</div>
           </div>
